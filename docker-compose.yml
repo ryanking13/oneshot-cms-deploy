@@ -10,10 +10,11 @@ services:
         container_name: cms
         privileged: yes
         restart: always
-        build: cms
+        build: cms-docker
         ports:
             - 8888
             - 8889
+            - 9001
         volumes:
             - ${PWD}/cms-docker/cms.conf:/usr/local/etc/cms.conf
             - cms_log:/var/local/log/cms/
@@ -28,6 +29,4 @@ services:
             - cms_db:/var/lib/postgresql/data
             - .${PWD}/cms-docker/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh
         environment:
-            - POSTGRES_DB=cmsdb
-            - POSTGRES_USER=cmsuser
-            - POSTGRES_PASSWORD=cmspass
+            - POSTGRES_PASSWORD=pa55w0rd

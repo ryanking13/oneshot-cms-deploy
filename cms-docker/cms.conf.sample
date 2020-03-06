@@ -56,7 +56,7 @@
     "_section": "Database",
 
     "_help": "Connection string for the database.",
-    "database": "postgresql+psycopg2://cmsuser:cmspass@localhost:5432/cmsdb",
+    "database": "postgresql+psycopg2://cmsuser:__CMSPASS__@postgres/cmsdb",
 
     "_help": "Whether SQLAlchemy prints DB queries on stdout.",
     "database_debug": false,
@@ -92,7 +92,7 @@
     "_help": "for other than testing. It must be a 16 bytes long",
     "_help": "hexadecimal number. You can easily create a key calling:",
     "_help": "python -c 'from cmscommon import crypto; print(crypto.get_hex_random_key())'",
-    "secret_key":             "7e045a51e4b102ea803c06f92841a1fb",
+    "secret_key":             "123455EC2E767890",
 
     "_help": "Whether Tornado prints debug information on stdout.",
     "tornado_debug": false,
