@@ -12,9 +12,9 @@ services:
         restart: always
         build: cms-docker
         ports:
-            - "8888"
-            - "8889"
-            - "9001"
+            - "8888:8888"
+            - "8889:8889"
+            - "9001:9001"
         volumes:
             - cms_log:/var/local/log/cms/
             - cms_tasks:/problems/
