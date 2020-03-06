@@ -16,17 +16,17 @@ services:
             - 8889
             - 9001
         volumes:
-            - ${PWD}/cms-docker/cms.conf:/usr/local/etc/cms.conf
             - cms_log:/var/local/log/cms/
             - cms_tasks:/problems/
-        links:
+        depends_on:
             - postgres
+        command: ./wait-for-it.sh db:5432 -- bash -c "cmsInitDB && supervisord"
 
     postgres:
         restart: always
         image: postgres
         volumes:
             - cms_db:/var/lib/postgresql/data
-            - .${PWD}/cms-docker/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh
+            - ${PWD}/cms-docker/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh
         environment:
             - POSTGRES_PASSWORD=pa55w0rd
