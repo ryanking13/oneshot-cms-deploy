@@ -20,7 +20,7 @@ services:
             - cms_tasks:/problems/
         depends_on:
             - "postgres"
-        command: ./wait-for-it.sh postgres:5432 -- bash -c "cmsInitDB && supervisord"
+        command: ./wait-for-it.sh postgres:5432 -- bash -c "cmsInitDB && cmsAddAdmin admin -p nimda && supervisord"
 
     postgres:
         restart: always
