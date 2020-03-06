@@ -25,7 +25,10 @@ if [ $? -ne 0 ]; then
     chmod +x /usr/local/bin/docker-compose
 fi
 
+echo "[*] Clearing previous docker instances, volumes"
 docker kill $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker volume ls -qf dangling=true | xargs -r docker volume rm
 
 RANDOM_SECRET=$(hexdump -n 16 -v -e ' 16/1 "%02X"' /dev/urandom)
 RANDOM_DB_PASS=$(hexdump -n 16 -v -e ' 16/1 "%02X"' /dev/urandom)

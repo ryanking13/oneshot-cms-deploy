@@ -12,19 +12,20 @@ services:
         restart: always
         build: cms-docker
         ports:
-            - 8888
-            - 8889
-            - 9001
+            - "8888"
+            - "8889"
+            - "9001"
         volumes:
             - cms_log:/var/local/log/cms/
             - cms_tasks:/problems/
         depends_on:
-            - postgres
-        command: ./wait-for-it.sh db:5432 -- bash -c "cmsInitDB && supervisord"
+            - "postgres"
+        command: ./wait-for-it.sh postgres:5432 -- bash -c "cmsInitDB && supervisord"
 
     postgres:
         restart: always
         image: postgres
+        user: postgres
         volumes:
             - cms_db:/var/lib/postgresql/data
             - ${PWD}/cms-docker/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh
