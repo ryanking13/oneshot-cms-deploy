@@ -38,6 +38,8 @@ rm -f ${PWD}/cms-docker/cms.conf.bak
 sed "s/__CMSPASS__/${RANDOM_DB_PASS}/g" ${PWD}/cms-docker/initdb.sh.sample > ${PWD}/cms-docker/initdb.sh
 chmod +x ${PWD}/cms-docker/initdb.sh
 
+cp ${PWD}/cms-docker/host_scripts/* /usr/local/bin/
+
 # Run docker
 docker-compose build cms
 docker-compose up -d

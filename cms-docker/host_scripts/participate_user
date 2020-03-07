@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ARGC=$#
+
+if [ $ARGC -lt 3 ]; then
+    echo "[*] Usage $0 {username} {contest_id}"
+    exit 1
+fi
+
+sudo docker exec cms cmsAddParticipation $1 -c $2

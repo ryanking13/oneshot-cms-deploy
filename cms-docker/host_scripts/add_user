@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ARGC=$#
+
+if [ $ARGC -lt 5 ]; then
+    echo "[*] Usage $0 {first name} {last name} {username} {password}"
+    exit 1
+fi
+
+sudo docker exec cms cmsAddUser $1 $2 $3 -p $4

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+sudo docker exec cms python3 -c '
+import logging
+logging.disable(logging.INFO)
+
+from cms.db import get_contest_list, SessionGen
+
+with SessionGen() as session:
+    contests = get_contest_list(session)
+    if not len(contests):
+        print("No Contests")
+        exit(0)
+
+    for i, row in enumerate(contests):
+        print("ID: %d -  Name: %s  -  Description: %s" % (i + 1, row.name, row.description))
+
+'
