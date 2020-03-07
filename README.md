@@ -1,10 +1,13 @@
 # oneshot-cms
 
-![Official Screenshot1](http://cms-dev.github.io/screenshots/cws2.png)
-
-![Official Screenshot2](http://cms-dev.github.io/screenshots/cws3.png)
-
 ✍️ 코딩 과제 온라인 저지 플랫폼 Docker script
+
+<br/>
+<div style="text-align: center;">
+<img src="http://cms-dev.github.io/screenshots/cws2.png" width="500"/>
+<img src="http://cms-dev.github.io/screenshots/cws3.png" width="500"/>
+</div>
+<br/>
 
 ## 이게 뭔가요?
 
@@ -19,7 +22,7 @@
 ## 실행 환경
 
 - Ubuntu 18.04
-- CMS1.4.rc1]
+- CMS1.4.rc1
 
 ## 실행 방법
 
@@ -70,6 +73,8 @@ add-user Gyeongjae Choi ryanking13 pa55w0rd
 # add-participation <username> <contest ID>
 add-participation ryanking13 1
 ```
+
+_[examples](./examples) 디렉토리의 예시를 참고하세요._
 
 ## See also
 
