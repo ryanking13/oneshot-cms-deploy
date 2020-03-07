@@ -2,7 +2,7 @@
 
 ARGC=$#
 
-if [ $ARGC -lt 5 ]; then
+if [ $ARGC -lt 4 ]; then
     echo "[*] Usage $0 {first name} {last name} {username} {password}"
     exit 1
 fi

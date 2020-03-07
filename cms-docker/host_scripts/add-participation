@@ -2,7 +2,7 @@
 
 ARGC=$#
 
-if [ $ARGC -lt 3 ]; then
+if [ $ARGC -lt 2 ]; then
     echo "[*] Usage $0 {username} {contest_id}"
     exit 1
 fi

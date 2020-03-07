@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ARGC=$#
+
+if [ $ARGC -lt 1 ]; then
+    echo "[*] Usage $0 {contest_id}"
+    exit 1
+fi
+
+stop-contest
+sudo docker exec -d -ti cms env TERM=xterm cmsResourceService -a $1
