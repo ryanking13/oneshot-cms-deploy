@@ -34,10 +34,11 @@ sudo ./install.sh
 
 - `http://localhost:8889`로 Admin 페이지 접속
   - 디폴트 계정: admin/nimda
-  - Admin 페이지에서 패스워드 수정 가능
+  - docker-compose.yml의 `CMS_ADMIN_USERNAME`, `CMS_ADMIN_PASSWORD`값으로 계정 수정 가능
+  - 또는 Admin 페이지에서 패스워드 수정 가능
 - `http://localhost:9001`로 서비스 관리 화면(supervisord) 접속
   - 디폴트 계정: admin/admin
-  - [supervisord.conf](./cms-docker/supervisord.conf) 파일에서 패스워드 수정 가능
+  - docker-compose.yml의 `SUPERVISOR_ADMIN_USERNAME`, `SUPERVISOR_ADMIN_PASSWORD`값으로 계정 수정 가능
 
 ### 1. Contest/Task 등록
 
