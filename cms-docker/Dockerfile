@@ -25,6 +25,7 @@ RUN wget https://github.com/cms-dev/cms/releases/download/v1.4.rc1/v1.4.rc1.tar.
 
 COPY cms.conf /usr/local/etc/cms.conf 
 COPY wait-for-it.sh /cms
+COPY run-cms.sh /cms
 
 RUN pip3 install supervisor
 COPY supervisord.conf /usr/local/etc/supervisord.conf

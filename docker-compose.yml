@@ -18,9 +18,12 @@ services:
         volumes:
             - cms_log:/var/local/log/cms/
             - cms_tasks:/problems/
+        environment:
+            - CMS_ADMIN_USERNAME=admin
+            - CMS_ADMIN_PASSWORD=nimda
         depends_on:
             - "postgres"
-        command: ./wait-for-it.sh postgres:5432 -- bash -c "cmsInitDB && cmsAddAdmin admin -p nimda && supervisord"
+        command: ./wait-for-it.sh postgres:5432 -- bash -c "./run-cms.sh"
 
     postgres:
         restart: always
