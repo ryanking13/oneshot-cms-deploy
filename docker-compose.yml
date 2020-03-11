@@ -21,6 +21,8 @@ services:
         environment:
             - CMS_ADMIN_USERNAME=admin
             - CMS_ADMIN_PASSWORD=nimda
+            - SUPERVISOR_ADMIN_USERNAME=admin
+            - SUPERVISOR_ADMIN_PASSWORD=admin
         depends_on:
             - "postgres"
         command: ./wait-for-it.sh postgres:5432 -- bash -c "./run-cms.sh"
