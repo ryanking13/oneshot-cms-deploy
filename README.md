@@ -77,6 +77,46 @@ add-participation ryanking13 1
 
 _[examples](./examples) 디렉토리의 예시를 참고하세요._
 
+### (Beta) 여러 컨테스트 동시에 열기
+
+1. [generate_cms_conf.py](./generate_cms_conf.py) 파일의 포트 값을 수정합니다.
+
+```python
+# e.g.
+CONTEST_LISTEN_PORT = 9999
+RESOURCE_SERVICE_PORT = 38000
+CONTEST_WEB_SERVER_PORT = 31000
+```
+
+2. `CONTEST_LISTEN_PORT` 값에 따라 `docker-compose.yml`의 포트 포워딩을 추가합니다.
+
+```yml
+ports:
+    - "8888:8888"
+    - "8889:8889"
+    - "9001:9001"
+    - "9999:9999" # 추가
+```
+
+3. generate_cms_conf.py를 실행하여 새로운 설정 파일을 생성하고, docker-compose를 재시작합니다.
+
+```sh
+./generate_cms_conf.py -o cms2.conf
+# docker-compose stop # 기존에 실행 중이었던 경우
+docker-compose up -d
+```
+
+4. 새로운 컨테스트를 실행합니다.
+
+```sh
+# 기존에 실행 중이었던 컨테스트
+# (docker-compose를 재시작하였으므로 기존 컨테스트도 재시작해주어야 합니다.)
+run-contest 1
+
+# 새 컨테스트
+CMS_CONFIG=cms2.conf run-contest 2
+```
+
 ## See also
 
 - [cms](http://cms-dev.github.io/): 공식 CMS 웹사이트
