@@ -13,5 +13,6 @@ if [ ! -z $CMS_CONFIG ]; then
 fi
 
 
-stop-contest
-sudo docker exec -d -ti cms env TERM=xterm env CMS_CONFIG=$CONFIG_FILE cmsResourceService -a $1
+stop-contest $1
+sudo docker exec -d -ti cms env TERM=xterm env CMS_CONFIG=/cms-conf/$CONFIG_FILE cmsContestWebServer -c $1
+sudo docker exec -d -ti cms env TERM=xterm env CMS_CONFIG=/cms-conf/$CONFIG_FILE cmsResourceService -a $1
