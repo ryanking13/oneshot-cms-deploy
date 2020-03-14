@@ -173,5 +173,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/linux,python,windows,virtualenv,visualstudiocode
-cms-docker/cms.conf
-cms-docker/initdb.sh
+**/cms.conf
+**/initdb.sh

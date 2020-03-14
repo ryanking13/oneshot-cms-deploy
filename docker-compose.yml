@@ -18,7 +18,9 @@ services:
         volumes:
             - cms_log:/var/local/log/cms/
             - cms_tasks:/problems/
+            - ./cms-docker/conf:/cms-conf
         environment:
+            - CMS_CONFIG=/cms-conf/cms.conf
             - CMS_ADMIN_USERNAME=admin
             - CMS_ADMIN_PASSWORD=nimda
             - SUPERVISOR_ADMIN_USERNAME=admin

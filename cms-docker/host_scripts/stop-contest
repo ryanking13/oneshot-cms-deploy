@@ -1,3 +1,12 @@
 #!/bin/sh
 
-sudo docker exec cms bash -c "kill \`ps -ef | grep 'cmsResourceService' | awk '{print \$2}'\`"
+ARGC=$#
+CONFIG_FILE="cms.conf"
+
+if [ $ARGC -lt 1 ]; then
+    echo "[*] Usage $0 {contest_id}"
+    exit 1
+fi
+
+sudo docker exec cms bash -c "kill \`ps -ef | grep 'cmsContestWebServer -c $1' | awk '{print \$2}'\`"
+sudo docker exec cms bash -c "kill \`ps -ef | grep 'cmsResourceService -a $1' | awk '{print \$2}'\`"
