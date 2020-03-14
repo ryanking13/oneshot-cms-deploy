@@ -1,11 +1,17 @@
 #!/bin/sh
 
 ARGC=$#
+CONFIG_FILE="cms.conf"
 
 if [ $ARGC -lt 1 ]; then
     echo "[*] Usage $0 {contest_id}"
     exit 1
 fi
 
+if [ ! -z $CMS_CONFIG ]; then
+    CONFIG_FILE=$CMS_CONFIG
+fi
+
+
 stop-contest
-sudo docker exec -d -ti cms env TERM=xterm cmsResourceService -a $1
+sudo docker exec -d -ti cms env TERM=xterm env CMS_CONFIG=$CONFIG_FILE cmsResourceService -a $1
