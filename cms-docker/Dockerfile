@@ -23,12 +23,12 @@ RUN wget https://github.com/cms-dev/cms/releases/download/v1.4.rc1/v1.4.rc1.tar.
     pip3 install -r requirements.txt && \
     python3 setup.py install
 
-COPY cms.conf /usr/local/etc/cms.conf 
+COPY conf/cms.conf /usr/local/etc/cms.conf
 COPY wait-for-it.sh /cms
 COPY run-cms.sh /cms
 
 RUN pip3 install supervisor
-COPY supervisord.conf /usr/local/etc/supervisord.conf
+COPY conf/supervisord.conf /usr/local/etc/supervisord.conf
 
 EXPOSE 8888 8889 9001
 WORKDIR /cms
