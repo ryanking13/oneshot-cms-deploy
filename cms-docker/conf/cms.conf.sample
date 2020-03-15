@@ -56,7 +56,7 @@
     "_section": "Database",
 
     "_help": "Connection string for the database.",
-    "database": "postgresql+psycopg2://cmsuser:__CMSPASS__@postgres:5432/cmsdb",
+    "database": "postgresql+psycopg2://cmsuser:cmspass@postgres:5432/cmsdb",
 
     "_help": "Whether SQLAlchemy prints DB queries on stdout.",
     "database_debug": false,

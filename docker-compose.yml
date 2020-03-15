@@ -3,7 +3,6 @@ version: '3'
 volumes:
       cms_db: {}
       cms_log: {}
-      cms_tasks: {}
 
 services:
     cms:
@@ -17,7 +16,6 @@ services:
             - "9001:9001"
         volumes:
             - cms_log:/var/local/log/cms/
-            - cms_tasks:/problems/
             - ./cms-docker/conf:/cms-conf
         environment:
             - CMS_CONFIG=/cms-conf/cms.conf
@@ -35,6 +33,6 @@ services:
         user: postgres
         volumes:
             - cms_db:/var/lib/postgresql/data
-            - ${PWD}/cms-docker/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh
+            - ./cms-docker/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh
         environment:
             - POSTGRES_PASSWORD=pa55w0rd
