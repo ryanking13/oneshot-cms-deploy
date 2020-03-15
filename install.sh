@@ -30,13 +30,7 @@ docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
 docker volume ls -qf dangling=true | xargs -r docker volume rm
 
-RANDOM_SECRET=$(hexdump -n 16 -v -e ' 16/1 "%02X"' /dev/urandom)
-RANDOM_DB_PASS=$(hexdump -n 16 -v -e ' 16/1 "%02X"' /dev/urandom)
-sed "s/__CMSPASS__/${RANDOM_DB_PASS}/g" ${PWD}/cms-docker/conf/cms.conf.sample > ${PWD}/cms-docker/conf/cms.conf.bak
-sed "s/123455EC2E767890/${RANDOM_SECRET}/g" ${PWD}/cms-docker/conf/cms.conf.bak > ${PWD}/cms-docker/conf/cms.conf
-rm -f ${PWD}/cms-docker/conf/cms.conf.bak
-sed "s/__CMSPASS__/${RANDOM_DB_PASS}/g" ${PWD}/cms-docker/initdb.sh.sample > ${PWD}/cms-docker/initdb.sh
-chmod +x ${PWD}/cms-docker/initdb.sh
+${PWD}/generate_cmf_conf.py -o cms.conf
 
 cp ${PWD}/cms-docker/host_scripts/* /usr/local/bin/
 

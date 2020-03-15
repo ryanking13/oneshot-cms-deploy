@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import secrets
 import json
 import pathlib
 import argparse
@@ -31,7 +32,7 @@ def main():
     args = parse_args()
 
     conf_dir = pathlib.Path("cms-docker/conf")
-    conf_path = conf_dir / "cms.conf"
+    conf_path = conf_dir / "cms.conf.sample"
     if not conf_path.exists():
         raise FileNotFoundError(
             f"{str(conf_path)} not exists, did you run `install.sh`?"
@@ -44,6 +45,7 @@ def main():
     core_services["ResourceService"][0] = [SERVICE_HOST, RESOURCE_SERVICE_PORT]
     core_services["ContestWebServer"][0] = [SERVICE_HOST, CONTEST_WEB_SERVER_PORT]
     conf["contest_listen_port"] = [CONTEST_LISTEN_PORT]
+    conf["secret_key"] = secrets.token_hex(16)
 
     new_conf = json.dumps(conf, indent=2, ensure_ascii=False)
 
